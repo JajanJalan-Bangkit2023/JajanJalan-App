@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">JajanJalan</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_valid_email_address">Enter valid email address</string>
+    <string name="enter_valid_password">Your password must be at least 8 character in length</string>
+    <string name="password">Password</string>
+    <string name="email_address">Email</string>
+    <string name="hello_welcome">Welcome, Back!</string>
+    <string name="logo">Login Ilustration</string>
+    <string name="register_here">Register here</string>
+    <string name="have_an_account">"Do you have an account? "</string>
+    <string name="create_account">Create an Account</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login_now">Login Now</string>
+    <string name="register_name">Name</string>
+    <string name="get_started">Get Started</string>
+    <string name="next">Next</string>
+    <string name="first_slide_title">Hallo Selamat Datang\nDi Jajan Jalan</string>
+    <string name="second_slide_title">"Nikmati kemudahan temukan Jajanan favorit diseikitar Anda  "</string>
+    <string name="third_slide_title">Ayo coba sekarang jelajahi jajanan kuliner dengan Aplikasi</string>
+    <string name="register_succeed">Register Succeed!</string>
+    <string name="continue_login">Continue Login</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register_empty">All fields must be filled in</string>
+    <string name="ok">Ok</string>
+    <string name="register_password_not_match">Your confirm password not match!</string>
+    <string name="Home">Home</string>
+    <string name="Favorite">Favorite</string>
+    <string name="Chat">Chat</string>
+    <string name="Profile">Profile</string>
+</resources>

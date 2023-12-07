@@ -1,0 +1,27 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.JajanJalan" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorSecondary">@color/blue</item>
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="bottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+<!--        <item name="itemIconTint">@color/grey</item>-->
+        <item name="android:colorPressedHighlight">@android:color/transparent</item>
+        <item name="android:state_pressed">false</item>
+        <item name="android:state_selected">false</item>
+        <item name="android:state_hovered">false</item>
+        <item name="android:checked">false</item>
+        <item name="background">@color/white</item>
+        <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView</item>
+    </style>
+
+    <style name="Theme.JajanJalan" parent="Base.Theme.JajanJalan" />
+</resources>
