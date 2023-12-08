@@ -153,7 +153,7 @@
             android:text="Login With Google"
             app:icon="@drawable/ic_google"
             app:iconTintMode="multiply"
-            app:iconGravity="start"
+            app:iconGravity="textStart"
             android:fontFamily="@font/roboto"
             android:textStyle="bold"
             app:strokeWidth="1dp"
