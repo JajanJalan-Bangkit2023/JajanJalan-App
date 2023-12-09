@@ -23,5 +23,13 @@
         <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView</item>
     </style>
 
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="queryBackground">@android:color/transparent</item>
+        <item name="iconifiedByDefault">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="android:background">@drawable/bg_corner_search</item>
+    </style>
+
     <style name="Theme.JajanJalan" parent="Base.Theme.JajanJalan" />
 </resources>

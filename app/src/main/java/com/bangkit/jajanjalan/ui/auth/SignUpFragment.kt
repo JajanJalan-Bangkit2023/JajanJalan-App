@@ -51,7 +51,7 @@ class SignUpFragment : Fragment() {
                     binding.btnRegister.isEnabled = false
                 }
                 is Result.Success -> {
-                    Log.d("User Detail", it.data.data.toString())
+                    Log.d("User Detail", it.data.userDetail.toString())
                     binding.progressIndicator.hide()
                     AlertDialog.Builder(requireContext()).apply {
                         setTitle("Register")

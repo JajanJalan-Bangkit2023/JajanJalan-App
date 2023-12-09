@@ -29,6 +29,29 @@
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            style="@style/Widget.MaterialComponents.BottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:itemIconSize="24dp"
+            android:clickable="false"
+            android:focusable="false"
+            app:itemActiveIndicatorStyle="@android:color/transparent"
+            app:itemIconTint="@color/bottom_nav_icon_color"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/main_menu" />
+
+    </FrameLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnLiveLocation"
         android:layout_width="wrap_content"
@@ -41,20 +64,6 @@
         android:src="@drawable/ic_menu_location"
         app:tint="@color/white" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        style="@style/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="bottom"
-        android:background="@android:color/transparent"
-        android:backgroundTint="@android:color/transparent"
-        app:itemIconSize="24dp"
-        android:clickable="false"
-        android:focusable="false"
-        app:itemActiveIndicatorStyle="@android:color/transparent"
-        app:itemIconTint="@color/bottom_nav_icon_color"
-        app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/main_menu" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

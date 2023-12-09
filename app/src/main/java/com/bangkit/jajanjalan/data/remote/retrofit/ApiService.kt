@@ -1,10 +1,12 @@
 package com.bangkit.jajanjalan.data.remote.retrofit
 
+import com.bangkit.jajanjalan.data.pref.UserModel
 import com.bangkit.jajanjalan.data.remote.response.LoginResponse
 import com.bangkit.jajanjalan.data.remote.response.User
 import com.bangkit.jajanjalan.data.remote.response.UserResponse
 import okhttp3.MultipartBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -36,7 +38,7 @@ interface ApiService {
     @GET("users/{id}")
     suspend fun getUserDetail(
         @Path("id") id: String
-    )
+    ): Response<UserResponse>
 
     @Multipart
     @PATCH("users/{id}")
