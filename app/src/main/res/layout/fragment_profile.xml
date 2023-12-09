@@ -1,13 +1,253 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgrounds"
     tools:context=".ui.profile.ProfileFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profile" />
 
-</FrameLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:contentDescription="@string/buttton_back"
+        android:focusable="true"
+        app:backgroundTint="@color/white"
+        app:elevation="25dp"
+        app:fabCustomSize="42dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back" />
+
+
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-28dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_180sdp"
+            android:background="@color/blue"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_profil"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_120sdp"
+            tools:ignore="ImageContrastCheck"
+            android:src="@drawable/product_sample" />
+
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout2"
+       android:text="@string/username" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username"
+        android:text="@string/email" />
+
+    <LinearLayout
+        android:id="@+id/bahasa"
+        android:layout_width="327dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email">
+
+
+        <ImageView
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_language" />
+
+        <TextView
+            android:id="@+id/tv_bahasa"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="@string/bahasa"
+            android:textSize="14sp" />
+
+        <ImageButton
+            android:id="@+id/btn_bahasa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/button_bahasa"
+            android:src="@drawable/ic_next"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pusat_bantuan"
+        android:layout_width="327dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bahasa">
+        <ImageView
+            android:layout_width="42dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_pusat_bantuan" />
+
+        <TextView
+            android:id="@+id/tv_pusat_bantuan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="@string/pusat_bantuan"
+            android:textSize="14sp" />
+
+        <ImageButton
+            android:id="@+id/btn_pusat_bantuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/button_pusat_bantuan"
+            android:src="@drawable/ic_next"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/notification"
+        android:layout_width="327dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pusat_bantuan">
+        <ImageView
+            android:id="@+id/iv_notification"
+            android:layout_width="42dp"
+            android:layout_height="wrap_content"
+
+            android:src="@drawable/ic_notifications" />
+        <TextView
+            android:layout_width="0dp"
+            android:id="@+id/tv_notification"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="@string/notification"
+            android:textSize="14sp" />
+
+        <ImageButton
+            android:id="@+id/btn_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/button_notifikasi"
+            android:src="@drawable/ic_next"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+ <LinearLayout
+        android:id="@+id/ratting_aplikasi"
+        android:layout_width="327dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notification">
+        <ImageView
+            android:id="@+id/iv_ratting_aplikasi"
+            android:layout_width="42dp"
+            android:layout_height="wrap_content"
+
+            android:src="@drawable/ic_ulasan" />
+        <TextView
+            android:layout_width="0dp"
+            android:id="@+id/tv_ratting_aplikasi"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="@string/nilai_apikasi"
+            android:textSize="14sp" />
+
+        <ImageButton
+            android:id="@+id/btn_ratting_aplikasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/button_ratting_aplikasi"
+            android:src="@drawable/ic_next"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_google"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_44sdp"
+        android:layout_marginHorizontal="@dimen/_16sdp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="39dp"
+        android:backgroundTint="#F44336"
+        android:fontFamily="@font/roboto"
+        android:text="@string/logout"
+        android:textAllCaps="false"
+
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:icon="@drawable/ic_logout_24"
+        app:iconGravity="textEnd"
+        app:iconTintMode="multiply"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratting_aplikasi"
+        app:strokeColor="@color/blue"
+        app:strokeWidth="1dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

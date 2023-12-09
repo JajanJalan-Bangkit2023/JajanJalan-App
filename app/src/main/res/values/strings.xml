@@ -44,4 +44,15 @@
     <string name="tombol_favorite">tombol_favorite</string>
     <string name="btn_favorite">tombol Favorite</string>
     <string name="button_location">button_location</string>
+    <string name="bahasa">Bahasa</string>
+    <string name="pusat_bantuan">Pusat Bantuan</string>
+    <string name="notification">Notifikasi</string>
+    <string name="button_notifikasi">button_notifikasi</string>
+    <string name="button_bahasa">button_bahasa</string>
+    <string name="button_pusat_bantuan">button_pusat_bantuan</string>
+    <string name="button_ratting_aplikasi">button_ratting_aplikasi</string>
+    <string name="nilai_apikasi">Beri Penilaian Apikasi</string>
+    <string name="logout">Logout</string>
+    <string name="username">Ujang Laksamana</string>
+    <string name="email">ujanglaksamana@gmail.com</string>
 </resources>
