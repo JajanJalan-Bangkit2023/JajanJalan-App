@@ -18,7 +18,11 @@
         android:padding="8dp">
 
         <ImageView
+<<<<<<< HEAD
             android:id="@+id/img_item_photo"
+=======
+            android:id="@+id/iv_product"
+>>>>>>> origin/master
             android:layout_width="@dimen/_130sdp"
             android:layout_height="@dimen/_100sdp"
             android:scaleType="fitXY"
@@ -34,11 +38,19 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24sp"
             android:layout_marginTop="8dp"
+<<<<<<< HEAD
             android:layout_toEndOf="@id/img_item_photo"
             android:textSize="14sp"
             android:textStyle="bold"
             card_view:layout_constraintStart_toEndOf="@+id/img_item_photo"
             card_view:layout_constraintTop_toTopOf="@+id/img_item_photo"
+=======
+            android:layout_toEndOf="@id/iv_product"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            card_view:layout_constraintStart_toEndOf="@+id/iv_product"
+            card_view:layout_constraintTop_toTopOf="@+id/iv_product"
+>>>>>>> origin/master
             tools:text="product_name" />
 
         <TextView
@@ -48,7 +60,11 @@
             android:ellipsize="end"
             android:maxLines="5"
             android:textSize="12sp"
+<<<<<<< HEAD
             card_view:layout_constraintBottom_toBottomOf="@+id/img_item_photo"
+=======
+            card_view:layout_constraintBottom_toBottomOf="@+id/iv_product"
+>>>>>>> origin/master
             card_view:layout_constraintEnd_toEndOf="@+id/tv_name_product"
             card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toStartOf="@+id/tv_name_product"
@@ -65,8 +81,13 @@
             android:layout_marginTop="8dp"
             android:background="#00FFFFFF"
             android:src="@drawable/ic_favorite"
+<<<<<<< HEAD
             card_view:layout_constraintStart_toStartOf="@+id/img_item_photo"
             card_view:layout_constraintTop_toTopOf="@+id/img_item_photo" />
+=======
+            card_view:layout_constraintStart_toStartOf="@+id/iv_product"
+            card_view:layout_constraintTop_toTopOf="@+id/iv_product" />
+>>>>>>> origin/master
 
         <ImageButton
             android:id="@+id/btn_location"
@@ -98,7 +119,11 @@
                 android:layout_height="@dimen/_24sdp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_ulasan"
+<<<<<<< HEAD
               />
+=======
+                />
+>>>>>>> origin/master
 
             <TextView
                 android:id="@+id/tv_ratting"
