@@ -28,4 +28,20 @@
     <string name="Favorite">Favorite</string>
     <string name="Chat">Chat</string>
     <string name="Profile">Profile</string>
+    <string name="or">Or</string>
+    <string name="login_with_google">Login With Google</string>
+    <string name="login">Login</string>
+    <string name="register">Register Now</string>
+    <string name="register_with_google">Register With Google</string>
+    <string name="profil_resto">profil_resto</string>
+    <string name="buttton_back">buttton_back</string>
+    <string name="button_favorite">button_favorite</string>
+    <string name="name_warung">Name_Warung</string>
+    <string name="ulasan">Ulasan</string>
+    <string name="menu">Daftar Menu</string>
+    <string name="daftarmenu">Lihat daftar Menu</string>
+    <string name="lihat_lokasi">Lihat Lokasi</string>
+    <string name="tombol_favorite">tombol_favorite</string>
+    <string name="btn_favorite">tombol Favorite</string>
+    <string name="button_location">button_location</string>
 </resources>
