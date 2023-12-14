@@ -9,7 +9,12 @@
         android:id="@+id/homeFragment"
         android:name="com.bangkit.jajanjalan.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.bangkit.jajanjalan.ui.favorite.FavoriteFragment"
@@ -25,4 +30,13 @@
         android:name="com.bangkit.jajanjalan.ui.chat.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.bangkit.jajanjalan.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="penjualId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

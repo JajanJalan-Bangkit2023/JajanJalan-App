@@ -151,7 +151,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_44sdp"
             android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_marginBottom="8dp"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/roboto"
             android:text="@string/login_with_google"
@@ -161,7 +160,7 @@
             app:icon="@drawable/ic_google"
             app:iconGravity="textStart"
             app:iconTintMode="multiply"
-            app:layout_constraintBottom_toTopOf="@id/linear_info_register"
+            app:layout_constraintTop_toBottomOf="@id/divider"
             app:strokeColor="@color/blue"
             app:strokeWidth="1dp"
             tools:layout_editor_absoluteX="21dp" />
@@ -170,11 +169,13 @@
             android:id="@+id/linear_info_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            app:layout_constraintTop_toBottomOf="@id/btn_google"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"
             android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_marginBottom="@dimen/_16sdp"
             android:orientation="horizontal">
 
             <TextView

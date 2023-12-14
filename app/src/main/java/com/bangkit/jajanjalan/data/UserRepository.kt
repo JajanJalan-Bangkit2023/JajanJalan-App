@@ -1,10 +1,14 @@
 package com.bangkit.jajanjalan.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.bangkit.jajanjalan.data.pref.DataStoreManager
 import com.bangkit.jajanjalan.data.pref.UserModel
 import com.bangkit.jajanjalan.data.remote.response.LoginResponse
+import com.bangkit.jajanjalan.data.remote.response.MenuByPenjualResponse
+import com.bangkit.jajanjalan.data.remote.response.MenuResponse
+import com.bangkit.jajanjalan.data.remote.response.PenjualResponse
 import com.bangkit.jajanjalan.data.remote.response.User
 import com.bangkit.jajanjalan.data.remote.response.UserResponse
 import com.bangkit.jajanjalan.data.remote.retrofit.ApiService
@@ -27,6 +31,15 @@ class UserRepository @Inject constructor(
     val resultUser: LiveData<Result<UserResponse>> get() = _resultUser
     val _user = MediatorLiveData<UserModel>()
     val user: LiveData<UserModel> get() = _user
+
+    private val _menu = MediatorLiveData<Result<MenuResponse>>()
+    val menu: LiveData<Result<MenuResponse>> get() = _menu
+
+    private val _penjualDetail = MediatorLiveData<Result<PenjualResponse>>()
+    val penjualDetail: LiveData<Result<PenjualResponse>> get() = _penjualDetail
+
+    private val _menuByPenjual = MediatorLiveData<Result<MenuByPenjualResponse>>()
+    val menuByPenjual: LiveData<Result<MenuByPenjualResponse>> get() = _menuByPenjual
 
     fun login(email: String, password: String): LiveData<Result<LoginResponse>> {
         resultLogin.value = Result.Loading
@@ -104,4 +117,45 @@ class UserRepository @Inject constructor(
     suspend fun clear() {
         dataStore.clear()
     }
+
+    // Menu
+    suspend fun getAllMenu(): LiveData<Result<MenuResponse>> {
+        _menu.value = Result.Loading
+        val response = apiService.getAllMenu()
+        Log.d("GET Menu", "GET All Menu")
+        if (response.isSuccessful) {
+            val responseData = response.body()
+            _menu.value = Result.Success(responseData!!)
+            Log.d("Menu Response", responseData.toString())
+        } else {
+            _menu.value = Result.Error(response.message())
+        }
+        return _menu
+    }
+
+    suspend fun getMenuByPenjual(id: Int): LiveData<Result<MenuByPenjualResponse>> {
+        _menuByPenjual.value = Result.Loading
+        val response = apiService.getMenuByPenjual(id)
+        if (response.isSuccessful) {
+            val responseData = response.body()
+            _menuByPenjual.value = Result.Success(responseData!!)
+        } else {
+            _menuByPenjual.value = Result.Error(response.message())
+        }
+        return _menuByPenjual
+    }
+
+    // Penjual
+    suspend fun getPenjualDetail(id: Int): LiveData<Result<PenjualResponse>> {
+        _penjualDetail.value = Result.Loading
+        val response = apiService.getPenjualDetail(id)
+        if (response.isSuccessful) {
+            val responseData = response.body()
+            _penjualDetail.value = Result.Success(responseData!!)
+        } else {
+            _penjualDetail.value = Result.Error(response.message())
+        }
+        return _penjualDetail
+    }
+
 }

@@ -17,7 +17,7 @@ class LoginViewModel @Inject constructor(
     private val repository: UserRepository
 ): ViewModel() {
 
-     val resultUser: LiveData<Result<UserResponse>> get() = repository.resultUser
+     private val resultUser: LiveData<Result<UserResponse>> get() = repository.resultUser
         fun login(email: String, password : String) = repository.login(email, password)
 
         fun saveUser(userId: String, email: String, name: String, image: String , password: String, token: String) {

@@ -12,6 +12,7 @@ import com.bangkit.jajanjalan.R
 import com.bangkit.jajanjalan.data.pref.UserModel
 import com.bangkit.jajanjalan.databinding.FragmentProfileBinding
 import com.bangkit.jajanjalan.ui.auth.AuthActivity
+import com.bangkit.jajanjalan.util.showBottomNavView
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -27,6 +28,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+        showBottomNavView()
         // Inflate the layout for this fragment
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root

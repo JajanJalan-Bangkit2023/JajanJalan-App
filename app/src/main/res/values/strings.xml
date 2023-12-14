@@ -30,4 +30,16 @@
     <string name="Profile">Profile</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="recommendation">Recommendation</string>
+    <string name="btn_favorite">Button Favorite</string>
+    <string name="button_location">Button Location</string>
+    <string name="register_now">Register Now</string>
+    <string name="or">Or</string>
+    <string name="register_with_google">Register With Google</string>
+    <string name="login_with_google">Login With Google</string>
+    <string name="login">Login</string>
+    <string name="menu">Menu</string>
+    <string name="daftarmenu">Daftar Menu</string>
+    <string name="btn_back">Button Back</string>
+    <string name="profil_resto">Photo profile Resto</string>
+    <string name="popular">Popular</string>
 </resources>

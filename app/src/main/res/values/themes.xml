@@ -31,5 +31,10 @@
         <item name="android:background">@drawable/bg_corner_search</item>
     </style>
 
+    <style name="ShapeAppearance.CutBorder" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
     <style name="Theme.JajanJalan" parent="Base.Theme.JajanJalan" />
 </resources>
