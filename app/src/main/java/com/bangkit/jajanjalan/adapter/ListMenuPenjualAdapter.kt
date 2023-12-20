@@ -32,32 +32,28 @@ class ListMenuPenjualAdapter: RecyclerView.Adapter<ListMenuPenjualAdapter.ListIt
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ListItemMenuViewHolder, position: Int) {
         val listItemMenu = differ.currentList[position]
-        if (listItemMenu != null) {
-            val rating = String.format("%.1f", listItemMenu.rating)
+        if (listItemMenu.menu != null) {
+            val rating = String.format("%.1f", listItemMenu.menu.rating)
             Glide.with(holder.itemView)
-                .load(listItemMenu.image)
+                .load(listItemMenu.menu.image)
                 .into(holder.binding.ivMenu)
 
             holder.binding.apply {
-                if (listItemMenu.rating != null) {
-                    tvRating.text = rating
-                } else {
-                    tvRating.text = "4.5"
-                }
-                tvNameProduct.text = listItemMenu.item
-                tvPrice.text = "Rp${listItemMenu.price.toString()} "
+                tvRating.text = rating
+                tvNameProduct.text = listItemMenu.menu.item
+                tvPrice.text = "Rp${listItemMenu.menu.price.toString()} "
             }
         }
         Log.d("Adapter listItemMenu", listItemMenu.toString())
     }
 
-    private val diffUtil: DiffUtil.ItemCallback<MenuPenjual> =
-        object : DiffUtil.ItemCallback<MenuPenjual>() {
-            override fun areItemsTheSame(oldItem: MenuPenjual, newItem: MenuPenjual): Boolean {
+    private val diffUtil: DiffUtil.ItemCallback<DataMenuItem> =
+        object : DiffUtil.ItemCallback<DataMenuItem>() {
+            override fun areItemsTheSame(oldItem: DataMenuItem, newItem: DataMenuItem): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: MenuPenjual, newItem: MenuPenjual): Boolean {
+            override fun areContentsTheSame(oldItem: DataMenuItem, newItem: DataMenuItem): Boolean {
                 return oldItem == newItem
             }
         }

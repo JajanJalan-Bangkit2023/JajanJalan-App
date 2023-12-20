@@ -69,7 +69,7 @@ interface ApiService {
     @GET("menu/penjual/{id}")
     suspend fun getMenuByPenjual(
         @Path("id") id: Int
-    ): Response<MenuByPenjualResponse>
+    ): Response<MenuResponse>
 
     @GET("menu/search")
     suspend fun searchMenu(

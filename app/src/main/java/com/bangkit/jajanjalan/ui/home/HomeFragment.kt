@@ -183,5 +183,11 @@ class HomeFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.searchView.setQuery("", false)
+        binding.searchView.clearFocus()
+    }
+
 
 }

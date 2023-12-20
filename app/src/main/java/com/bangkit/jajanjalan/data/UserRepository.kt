@@ -48,8 +48,8 @@ class UserRepository @Inject constructor(
     private val _penjualDetail = MediatorLiveData<Result<PenjualResponse>>()
     val penjualDetail: LiveData<Result<PenjualResponse>> get() = _penjualDetail
 
-    private val _menuByPenjual = MediatorLiveData<Result<MenuByPenjualResponse>>()
-    val menuByPenjual: LiveData<Result<MenuByPenjualResponse>> get() = _menuByPenjual
+    private val _menuByPenjual = MediatorLiveData<Result<MenuResponse>>()
+    val menuByPenjual: LiveData<Result<MenuResponse>> get() = _menuByPenjual
 
     fun login(email: String, password: String): LiveData<Result<LoginResponse>> {
         resultLogin.value = Result.Loading
@@ -206,7 +206,7 @@ class UserRepository @Inject constructor(
         }
     }
 
-    suspend fun getMenuByPenjual(id: Int): LiveData<Result<MenuByPenjualResponse>> {
+    suspend fun getMenuByPenjual(id: Int): LiveData<Result<MenuResponse>> {
         _menuByPenjual.value = Result.Loading
         val response = apiService.getMenuByPenjual(id)
         if (response.isSuccessful) {
