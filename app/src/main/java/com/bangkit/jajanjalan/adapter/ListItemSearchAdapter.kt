@@ -8,16 +8,18 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.jajanjalan.data.remote.response.DataMenuItem
+import com.bangkit.jajanjalan.databinding.ItemsMenuSearchBinding
+import com.bangkit.jajanjalan.databinding.ItemsProductBinding
 import com.bangkit.jajanjalan.databinding.ListItemProductBinding
 import com.bumptech.glide.Glide
 
-class ListItemMenuAdapter: RecyclerView.Adapter<ListItemMenuAdapter.ListItemMenuViewHolder>() {
+class ListItemSearchAdapter: RecyclerView.Adapter<ListItemSearchAdapter.ListItemMenuViewHolder>() {
     lateinit var onItemClick: ((DataMenuItem) -> Unit)
-    inner class ListItemMenuViewHolder(val binding: ListItemProductBinding): RecyclerView.ViewHolder(binding.root)
+    inner class ListItemMenuViewHolder(val binding: ItemsMenuSearchBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemMenuViewHolder {
         return ListItemMenuViewHolder(
-            ListItemProductBinding.inflate(
+            ItemsMenuSearchBinding.inflate(
                 LayoutInflater.from(parent.context), parent,false
             )
         )
@@ -27,27 +29,27 @@ class ListItemMenuAdapter: RecyclerView.Adapter<ListItemMenuAdapter.ListItemMenu
         return differ.currentList.size
     }
 
-
     override fun onBindViewHolder(holder: ListItemMenuViewHolder, position: Int) {
         val listItemMenu = differ.currentList[position]
         if (listItemMenu.menu != null) {
+
             val rating = String.format("%.1f", listItemMenu.menu.rating).toDouble()
 
             Glide.with(holder.itemView)
                 .load(listItemMenu.menu.image)
-                .into(holder.binding.ivProduct)
+                .into(holder.binding.ivMenu)
 
             holder.binding.apply {
-                menuName.text = listItemMenu.menu.item
-                menuPrice.text = "Rp${listItemMenu.menu.price.toString()}"
-                sellerName.text = listItemMenu.penjual?.name
+                tvNameProduct.text = listItemMenu.menu.item
+                tvPrice.text = "Rp${listItemMenu.menu.price.toString()}"
                 tvRating.text = rating.toString()
+                tvRating.text = rating.toString()
+                sellerName.text = listItemMenu.penjual?.name
             }
             holder.itemView.setOnClickListener {
                 onItemClick.invoke(listItemMenu)
             }
         }
-        Log.d("Adapter listItemMenu", listItemMenu.toString())
     }
 
     private val diffUtil: DiffUtil.ItemCallback<DataMenuItem> =

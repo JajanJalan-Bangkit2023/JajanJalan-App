@@ -31,11 +31,13 @@ class ListMenuPenjualAdapter: RecyclerView.Adapter<ListMenuPenjualAdapter.ListIt
     override fun onBindViewHolder(holder: ListItemMenuViewHolder, position: Int) {
         val listItemMenu = differ.currentList[position]
         if (listItemMenu != null) {
+            val rating = String.format("%.1f", listItemMenu.rating).toDouble()
             Glide.with(holder.itemView)
                 .load(listItemMenu.image)
                 .into(holder.binding.ivMenu)
 
             holder.binding.apply {
+                tvRating.text = rating.toString()
                 tvNameProduct.text = listItemMenu.item
                 tvPrice.text = "Rp${listItemMenu.price.toString()} "
             }

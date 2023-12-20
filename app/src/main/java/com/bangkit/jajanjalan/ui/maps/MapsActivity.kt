@@ -109,10 +109,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
 
+    @SuppressLint("SuspiciousIndentation")
     private fun moveCameraToMyLocation(location: Location) {
      val myLocation = LatLng(location.latitude, location.longitude)
         mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation))
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 15f))
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 11f))
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

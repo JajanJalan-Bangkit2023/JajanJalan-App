@@ -45,4 +45,5 @@
     <string name="title_activity_maps">MapsActivity</string>
     <string name="profile_updated">Updated Succeed!</string>
     <string name="feature_in_development_stage">Feature in development stage</string>
+    <string name="menu_is_not_found">Menu is not found</string>
 </resources>

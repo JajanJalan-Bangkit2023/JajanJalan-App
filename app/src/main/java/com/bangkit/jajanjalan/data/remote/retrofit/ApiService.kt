@@ -23,6 +23,7 @@ import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -69,6 +70,11 @@ interface ApiService {
     suspend fun getMenuByPenjual(
         @Path("id") id: Int
     ): Response<MenuByPenjualResponse>
+
+    @GET("menu/search")
+    suspend fun searchMenu(
+        @Query("item") item: String
+    ): MenuResponse
 
     @GET("recomendation/high-rating")
     suspend fun getRecommendationMenu(

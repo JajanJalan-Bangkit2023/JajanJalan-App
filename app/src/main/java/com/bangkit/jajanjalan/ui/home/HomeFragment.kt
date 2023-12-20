@@ -21,6 +21,7 @@ import com.bangkit.jajanjalan.databinding.FragmentHomeBinding
 import com.bangkit.jajanjalan.util.hide
 import com.bangkit.jajanjalan.util.show
 import com.bangkit.jajanjalan.util.showBottomNavView
+import com.bangkit.jajanjalan.util.toast
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -54,6 +55,7 @@ class HomeFragment : Fragment() {
 
         setupRv()
         getUserDetail()
+        setUpSearchBar()
     }
 
     private fun getUserDetail() {
@@ -72,39 +74,61 @@ class HomeFragment : Fragment() {
     }
 
     private fun observe(token: String) {
-        viewModel.getAllMenu().observe(viewLifecycleOwner) {menu->
-            when(menu) {
-                is Result.Loading -> {
-                    showShimmerLoading(true)
+        if (view != null && viewLifecycleOwner != null) {
+            viewModel.getAllMenu().observe(viewLifecycleOwner) {menu->
+                when(menu) {
+                    is Result.Loading -> {
+                        showShimmerLoading(true)
+                    }
+                    is Result.Success -> {
+                        showShimmerLoading(false)
+                        Log.d("Home Recycler Menu", menu.data.data.toString())
+                        adapter.differ.submitList(menu.data.data)
+                        setupRvPopular()
+                    }
+                    is Result.Error -> {
+                        showShimmerLoading(false)
+                        Log.d("Menu Recycler", menu.error)
+                    }
                 }
-                is Result.Success -> {
-                    showShimmerLoading(false)
-                    Log.d("Home Recycler Menu", menu.data.data.toString())
-                    adapter.differ.submitList(menu.data.data)
-                    setupRvPopular()
-                }
-                is Result.Error -> {
-                    showShimmerLoading(false)
-                    Log.d("Menu Recycler", menu.error)
+            }
+            viewModel.getRecommendMenu(token).observe(viewLifecycleOwner) {menu->
+                when(menu) {
+                    is Result.Loading -> {
+                        showShimmerLoading(true)
+                    }
+                    is Result.Success -> {
+                        showShimmerLoading(false)
+                        Log.d("Home Recycler Recommend", menu.data.data.toString())
+                        recommendationAdapter.differ.submitList(menu.data.data)
+                        setupRvRecommendation()
+                    }
+                    is Result.Error -> {
+                        showShimmerLoading(false)
+                        Log.d("Menu Recycler", menu.error)
+                    }
                 }
             }
         }
-        viewModel.getRecommendMenu(token).observe(viewLifecycleOwner) {menu->
-            when(menu) {
-                is Result.Loading -> {
-                    showShimmerLoading(true)
+
+    }
+
+    private fun setUpSearchBar() {
+        binding.apply {
+            searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    val query = searchView.query.toString()
+                    val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment(query)
+                    findNavController().navigate(action)
+                    return true
                 }
-                is Result.Success -> {
-                    showShimmerLoading(false)
-                    Log.d("Home Recycler Recommend", menu.data.data.toString())
-                    recommendationAdapter.differ.submitList(menu.data.data)
-                    setupRvRecommendation()
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return false
                 }
-                is Result.Error -> {
-                    showShimmerLoading(false)
-                    Log.d("Menu Recycler", menu.error)
-                }
-            }
+
+            })
+
         }
     }
 
@@ -159,13 +183,5 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
 
-
-    override fun onResume() {
-        super.onResume()
-    }
 }

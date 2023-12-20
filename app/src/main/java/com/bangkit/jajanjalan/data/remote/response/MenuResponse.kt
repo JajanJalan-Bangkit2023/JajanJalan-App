@@ -62,14 +62,6 @@ data class DataMenuItem(
 	@field:SerializedName("penjualId")
 	val penjualId: Int? = null,
 
-	@field:SerializedName("item")
-	val item: String? = null,
-
-	@field:SerializedName("image")
-	val image: String? = null,
-
-	@field:SerializedName("price")
-	val price: Int? = null,
 ) : Parcelable
 
 @Parcelize

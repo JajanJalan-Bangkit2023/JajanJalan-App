@@ -79,10 +79,11 @@ class ProfileFragment : Fragment() {
     }
 
     private fun navigateToAuthActivity() {
-        Intent(requireActivity(), AuthActivity::class.java).also { intent->
+        Intent(requireContext(), AuthActivity::class.java).also { intent->
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
+
     }
 
     override fun onResume() {

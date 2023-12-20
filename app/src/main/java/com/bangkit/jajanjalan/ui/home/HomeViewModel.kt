@@ -38,5 +38,7 @@ class HomeViewModel @Inject constructor (private val repository: UserRepository)
         return menuResponse
     }
 
-    fun getRecommendMenu(token: String): LiveData<Result<MenuResponse>> = repository.getRecommend(token)
+    fun searchMenu(query: String) = repository.searchMenu(query)
+
+    fun getRecommendMenu(token: String) = repository.getRecommend(token)
 }

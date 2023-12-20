@@ -168,6 +168,25 @@ class UserRepository @Inject constructor(
         return _menu
     }
 
+    fun searchMenu(keyword: String) : LiveData<Result<MenuResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.searchMenu(keyword)
+            if (response.status == "success") {
+                emit(Result.Success(response))
+            } else {
+                emit(Result.Error(response.status!!))
+            }
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, PenjualResponse::class.java)
+            val errorMessage = errorBody.status
+            Result.Error("Search mneu failed: $errorMessage")
+        }
+    }
+
     fun getAllPenjual() : LiveData<Result<ListPenjual>> = liveData {
         emit(Result.Loading)
         try {
