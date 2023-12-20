@@ -33,7 +33,7 @@ class ListItemSearchAdapter: RecyclerView.Adapter<ListItemSearchAdapter.ListItem
         val listItemMenu = differ.currentList[position]
         if (listItemMenu.menu != null) {
 
-            val rating = String.format("%.1f", listItemMenu.menu.rating).toDouble()
+            val rating = String.format("%.1f", listItemMenu.menu.rating)
 
             Glide.with(holder.itemView)
                 .load(listItemMenu.menu.image)
@@ -42,8 +42,8 @@ class ListItemSearchAdapter: RecyclerView.Adapter<ListItemSearchAdapter.ListItem
             holder.binding.apply {
                 tvNameProduct.text = listItemMenu.menu.item
                 tvPrice.text = "Rp${listItemMenu.menu.price.toString()}"
-                tvRating.text = rating.toString()
-                tvRating.text = rating.toString()
+                tvRating.text = rating
+                tvRating.text = rating
                 sellerName.text = listItemMenu.penjual?.name
             }
             holder.itemView.setOnClickListener {

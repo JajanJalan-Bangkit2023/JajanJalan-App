@@ -1,5 +1,6 @@
 package com.bangkit.jajanjalan.adapter
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -28,16 +29,21 @@ class ListMenuPenjualAdapter: RecyclerView.Adapter<ListMenuPenjualAdapter.ListIt
     }
 
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ListItemMenuViewHolder, position: Int) {
         val listItemMenu = differ.currentList[position]
         if (listItemMenu != null) {
-            val rating = String.format("%.1f", listItemMenu.rating).toDouble()
+            val rating = String.format("%.1f", listItemMenu.rating)
             Glide.with(holder.itemView)
                 .load(listItemMenu.image)
                 .into(holder.binding.ivMenu)
 
             holder.binding.apply {
-                tvRating.text = rating.toString()
+                if (listItemMenu.rating != null) {
+                    tvRating.text = rating
+                } else {
+                    tvRating.text = "4.5"
+                }
                 tvNameProduct.text = listItemMenu.item
                 tvPrice.text = "Rp${listItemMenu.price.toString()} "
             }

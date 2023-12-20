@@ -28,10 +28,11 @@ class ListItemMenuAdapter: RecyclerView.Adapter<ListItemMenuAdapter.ListItemMenu
     }
 
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ListItemMenuViewHolder, position: Int) {
         val listItemMenu = differ.currentList[position]
         if (listItemMenu.menu != null) {
-            val rating = String.format("%.1f", listItemMenu.menu.rating).toDouble()
+            val rating = String.format("%.1f", listItemMenu.menu.rating)
 
             Glide.with(holder.itemView)
                 .load(listItemMenu.menu.image)
@@ -41,7 +42,7 @@ class ListItemMenuAdapter: RecyclerView.Adapter<ListItemMenuAdapter.ListItemMenu
                 menuName.text = listItemMenu.menu.item
                 menuPrice.text = "Rp${listItemMenu.menu.price.toString()}"
                 sellerName.text = listItemMenu.penjual?.name
-                tvRating.text = rating.toString()
+                tvRating.text = rating
             }
             holder.itemView.setOnClickListener {
                 onItemClick.invoke(listItemMenu)
