@@ -37,10 +37,7 @@ class ListMenuPenjualAdapter: RecyclerView.Adapter<ListMenuPenjualAdapter.ListIt
 
             holder.binding.apply {
                 tvNameProduct.text = listItemMenu.item
-                tvPrice.text = "Rp ${listItemMenu.price.toString()} "
-            }
-            holder.itemView.setOnClickListener {
-                onItemClick.invoke(listItemMenu)
+                tvPrice.text = "Rp${listItemMenu.price.toString()} "
             }
         }
         Log.d("Adapter listItemMenu", listItemMenu.toString())

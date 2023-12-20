@@ -1,11 +1,13 @@
 package com.bangkit.jajanjalan.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.bangkit.jajanjalan.databinding.ActivityMainBinding
+import com.bangkit.jajanjalan.ui.maps.MapsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,5 +25,9 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(binding.fragmentLayout.id) as NavHostFragment
         navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
+
+        binding.btnLiveLocation.setOnClickListener {
+            startActivity(Intent(this, MapsActivity::class.java))
+        }
     }
 }

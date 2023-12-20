@@ -31,6 +31,22 @@ data class PenjualResponse(
 	val status: String? = null
 )
 
+data class ListPenjual(
+
+	@field:SerializedName("data")
+	val data: AllPenjual? = null,
+
+	@field:SerializedName("status")
+	val status: String? = null
+)
+
+data class AllPenjual(
+
+	@field:SerializedName("penjual")
+	val penjual: List<Penjual>? = null
+)
+
+
 @Parcelize
 data class DataMenuItem(
 
@@ -44,7 +60,16 @@ data class DataMenuItem(
 	val penjual: Penjual? = null,
 
 	@field:SerializedName("penjualId")
-	val penjualId: Int? = null
+	val penjualId: Int? = null,
+
+	@field:SerializedName("item")
+	val item: String? = null,
+
+	@field:SerializedName("image")
+	val image: String? = null,
+
+	@field:SerializedName("price")
+	val price: Int? = null,
 ) : Parcelable
 
 @Parcelize
@@ -111,10 +136,10 @@ data class Penjual(
 	val image: String? = null,
 
 	@field:SerializedName("lon")
-	val lon: Float? = null,
+	val lon: Double? = null,
 
 	@field:SerializedName("lat")
-	val lat: Float? = null
+	val lat: Double? = null
 ) : Parcelable
 
 data class Rating(
@@ -127,6 +152,33 @@ data class Rating(
 
 	@field:SerializedName("menu_id")
 	val menuId: Int? = null
+)
+
+data class ListRecommend(
+
+	@field:SerializedName("data")
+	val data: List<DataMenuItem>? = null,
+
+	@field:SerializedName("status")
+	val status: String? = null
+)
+
+data class Recommend(
+
+	@field:SerializedName("id")
+	val id: Int? = null,
+
+	@field:SerializedName("penjualId")
+	val penjualId: Int? = null,
+
+	@field:SerializedName("item")
+	val item: String? = null,
+
+	@field:SerializedName("image")
+	val image: String? = null,
+
+	@field:SerializedName("price")
+	val price: Int? = null,
 )
 
 

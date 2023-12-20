@@ -5,6 +5,7 @@ plugins {
     id ("androidx.navigation.safeargs")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -40,10 +41,13 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
     val lifecycle_version = "2.5.0"
 
     implementation("androidx.core:core-ktx:1.9.0")
@@ -62,9 +66,11 @@ dependencies {
     //intuit
     implementation ("com.intuit.sdp:sdp-android:1.0.6")
     implementation ("com.intuit.ssp:ssp-android:1.0.6")
+
     // Retrofit and Gson
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
     // KotlinX
     implementation ("androidx.activity:activity-ktx:1.8.1")
@@ -87,10 +93,15 @@ dependencies {
     implementation("androidx.datastore:datastore-core:1.0.0")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
-    // json web token
-    implementation ("io.jsonwebtoken:jjwt-api:0.11.2")
-    implementation ("io.jsonwebtoken:jjwt-impl:0.11.2")
-    implementation ("io.jsonwebtoken:jjwt-jackson:0.11.2")
+    // Shimmer loading
+    implementation ("com.facebook.shimmer:shimmer:0.2.0@aar")
+
+    //room
+    val room_version = "2.6.1"
+    implementation ("androidx.room:room-runtime:$room_version")
+    kapt ("androidx.room:room-compiler:$room_version")
+    implementation ("androidx.room:room-ktx:$room_version")
+
 }
 
 

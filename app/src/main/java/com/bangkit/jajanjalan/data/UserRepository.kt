@@ -3,8 +3,13 @@ package com.bangkit.jajanjalan.data
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.liveData
+import com.bangkit.jajanjalan.data.local.entity.FavoriteEntity
+import com.bangkit.jajanjalan.data.local.room.FavoriteDao
 import com.bangkit.jajanjalan.data.pref.DataStoreManager
 import com.bangkit.jajanjalan.data.pref.UserModel
+import com.bangkit.jajanjalan.data.remote.response.ListPenjual
+import com.bangkit.jajanjalan.data.remote.response.ListRecommend
 import com.bangkit.jajanjalan.data.remote.response.LoginResponse
 import com.bangkit.jajanjalan.data.remote.response.MenuByPenjualResponse
 import com.bangkit.jajanjalan.data.remote.response.MenuResponse
@@ -12,18 +17,23 @@ import com.bangkit.jajanjalan.data.remote.response.PenjualResponse
 import com.bangkit.jajanjalan.data.remote.response.User
 import com.bangkit.jajanjalan.data.remote.response.UserResponse
 import com.bangkit.jajanjalan.data.remote.retrofit.ApiService
+import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.HttpException
 import retrofit2.Response
 import javax.inject.Inject
 
 class UserRepository @Inject constructor(
     private val apiService: ApiService,
-    private val dataStore: DataStoreManager
+    private val dataStore: DataStoreManager,
+    private val favDao: FavoriteDao
 ) {
     private val resultLogin = MediatorLiveData<Result<LoginResponse>>()
     private val resultRegister = MediatorLiveData<Result<UserResponse>>()
@@ -105,6 +115,31 @@ class UserRepository @Inject constructor(
         return _resultUser
     }
 
+    fun updateProfile(
+        token: String,
+        id: String,
+        name: RequestBody,
+        password: RequestBody,
+        image: MultipartBody.Part
+    ) : LiveData<Result<UserResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.updateUser(token, id, name, password, image)
+            if (response.message == "User updated successfully") {
+                emit(Result.Success(response))
+            } else {
+                emit(Result.Error(response.message!!))
+            }
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, UserResponse::class.java)
+            val errorMessage = errorBody.message
+            Result.Error("Upload failed: $errorMessage")
+        }
+    }
+
 
     suspend fun saveUser(userId: String, email: String, name: String, image: String , password: String, token: String) {
         dataStore.saveUser(userId, email, name, image, password, token)
@@ -133,6 +168,25 @@ class UserRepository @Inject constructor(
         return _menu
     }
 
+    fun getAllPenjual() : LiveData<Result<ListPenjual>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getAllPenjual()
+            if (response.status == "success") {
+                emit(Result.Success(response))
+            } else {
+                emit(Result.Error(response.status!!))
+            }
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, PenjualResponse::class.java)
+            val errorMessage = errorBody.status
+            Result.Error("Upload failed: $errorMessage")
+        }
+    }
+
     suspend fun getMenuByPenjual(id: Int): LiveData<Result<MenuByPenjualResponse>> {
         _menuByPenjual.value = Result.Loading
         val response = apiService.getMenuByPenjual(id)
@@ -143,6 +197,25 @@ class UserRepository @Inject constructor(
             _menuByPenjual.value = Result.Error(response.message())
         }
         return _menuByPenjual
+    }
+
+    fun getRecommend(token: String) : LiveData<Result<MenuResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getRecommendationMenu(token)
+            if (response.status == "success") {
+                emit(Result.Success(response))
+            } else {
+                emit(Result.Error(response.status!!))
+            }
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, PenjualResponse::class.java)
+            val errorMessage = errorBody.status
+            Result.Error("Get Recommendation Failed: $errorMessage")
+        }
     }
 
     // Penjual
@@ -157,5 +230,41 @@ class UserRepository @Inject constructor(
         }
         return _penjualDetail
     }
+
+    // Favorite
+    fun getAllFavorite() : LiveData<Result<List<FavoriteEntity>>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = favDao.getFavorite()
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    fun isFavorite(id: Int) : LiveData<Boolean> {
+        return favDao.isFavorite(id)
+    }
+
+    fun addToFavorite(favoriteEntity: FavoriteEntity) : LiveData<Result<String>> = liveData {
+        emit(Result.Loading)
+        try {
+            favDao.insertFavorite(favoriteEntity)
+            emit(Result.Success("Seller added to favorite!"))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    fun deleteFromFavorite(favoriteEntity: FavoriteEntity) : LiveData<Result<String>> = liveData {
+        emit(Result.Loading)
+        try {
+            favDao.deleteFavorite(favoriteEntity)
+            emit(Result.Success("Seller deleted from favorite!"))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
 
 }

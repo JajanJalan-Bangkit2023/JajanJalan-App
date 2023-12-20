@@ -8,7 +8,7 @@
     <string name="hello_welcome">Welcome, Back!</string>
     <string name="logo">Login Ilustration</string>
     <string name="register_here">Register here</string>
-    <string name="have_an_account">"Do you have an account? "</string>
+    <string name="have_an_account">"Don't have an account? "</string>
     <string name="create_account">Create an Account</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="login_now">Login Now</string>
@@ -42,4 +42,7 @@
     <string name="btn_back">Button Back</string>
     <string name="profil_resto">Photo profile Resto</string>
     <string name="popular">Popular</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="profile_updated">Updated Succeed!</string>
+    <string name="feature_in_development_stage">Feature in development stage</string>
 </resources>

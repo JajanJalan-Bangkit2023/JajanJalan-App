@@ -14,17 +14,28 @@
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_homeFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.bangkit.jajanjalan.ui.favorite.FavoriteFragment"
         android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.bangkit.jajanjalan.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.bangkit.jajanjalan.ui.chat.ChatFragment"
@@ -39,4 +50,9 @@
             android:name="penjualId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.bangkit.jajanjalan.ui.profile.edit.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
 </navigation>

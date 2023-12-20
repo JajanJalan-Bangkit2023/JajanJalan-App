@@ -24,47 +24,11 @@
                 app:cardCornerRadius="8dp">
 
                 <ImageView
-                    android:id="@+id/iv_product"
+                    android:id="@+id/iv_seller"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/grey"
                     android:scaleType="centerCrop"/>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/btn_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:cardBackgroundColor="#BFFFFFFF"
-                app:cardCornerRadius="5dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/blueThin"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="12dp"
-                    android:paddingVertical="4dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_star_yellow" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:layout_marginStart="@dimen/_2sdp"
-                        android:layout_gravity="center_vertical"
-                        android:text="4.5"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12ssp" />
-                </LinearLayout>
-
 
             </androidx.cardview.widget.CardView>
 
@@ -80,7 +44,7 @@
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/menuName"
+                android:id="@+id/seller_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
@@ -90,14 +54,6 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp" />
 
-            <TextView
-                android:id="@+id/menuPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
-                android:text="Rp70.000"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12ssp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -108,16 +64,15 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_food_bank" />
+                    android:src="@drawable/ic_location_blue" />
                 <TextView
-                    android:id="@+id/seller_name"
+                    android:id="@+id/seller_address"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
                     android:layout_marginStart="@dimen/_2sdp"
                     android:layout_gravity="center_vertical"
-                    android:text=""
-                    android:maxLines="1"
+                    android:text="Sudirman, Jakarta"
                     android:textColor="@color/blue"
                     android:textSize="@dimen/_10ssp" />
             </LinearLayout>

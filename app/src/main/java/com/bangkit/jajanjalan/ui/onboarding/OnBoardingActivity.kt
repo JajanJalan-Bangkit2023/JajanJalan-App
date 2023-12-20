@@ -56,8 +56,9 @@ class OnBoardingActivity : AppCompatActivity() {
             } else {
                 val intent = Intent(this@OnBoardingActivity, AuthActivity::class.java)
                 startActivity(intent)
+                finishAffinity()
                 onBoardingFinished()
-                finish()
+                this.finish()
             }
         }
     }

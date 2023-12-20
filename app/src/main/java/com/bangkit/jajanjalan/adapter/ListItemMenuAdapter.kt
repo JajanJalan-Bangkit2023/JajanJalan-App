@@ -30,14 +30,15 @@ class ListItemMenuAdapter: RecyclerView.Adapter<ListItemMenuAdapter.ListItemMenu
 
     override fun onBindViewHolder(holder: ListItemMenuViewHolder, position: Int) {
         val listItemMenu = differ.currentList[position]
-        if (listItemMenu != null) {
+        if (listItemMenu.menu != null) {
             Glide.with(holder.itemView)
-                .load(listItemMenu.menu?.image)
+                .load(listItemMenu.menu.image)
                 .into(holder.binding.ivProduct)
 
             holder.binding.apply {
-                menuName.text = listItemMenu.menu?.item
-                menuPrice.text = listItemMenu.menu?.price.toString()
+                menuName.text = listItemMenu.menu.item
+                menuPrice.text = "Rp${listItemMenu.menu.price.toString()}"
+                sellerName.text = listItemMenu.penjual?.name
             }
             holder.itemView.setOnClickListener {
                 onItemClick.invoke(listItemMenu)
