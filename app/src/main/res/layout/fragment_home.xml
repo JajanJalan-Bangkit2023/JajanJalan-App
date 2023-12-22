@@ -147,10 +147,28 @@
                 app:layout_constraintTop_toBottomOf="@id/rv_category"
                 app:layout_constraintStart_toStartOf="parent"/>
 
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:shimmer_duration="800"
+                android:layout_marginStart="@dimen/_16sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_recommendation">
+
+                <include layout="@layout/items_product_placeholder" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+
             <androidx.recyclerview.widget.RecyclerView
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:id="@+id/rv_menu_recommendation"
                 android:layout_width="match_parent"
+                android:visibility="visible"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -164,20 +182,37 @@
                 android:id="@+id/tv_nearest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_28sdp"
                 android:layout_marginStart="@dimen/_16sdp"
                 android:text="@string/popular"
                 android:fontFamily="@font/poppins"
                 android:textStyle="bold"
                 android:textSize="@dimen/_14sdp"
-                app:layout_constraintTop_toBottomOf="@id/rv_menu_recommendation"
+                app:layout_constraintTop_toBottomOf="@id/shimmer_view_container"
                 app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container2"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:shimmer_duration="800"
+                android:layout_marginStart="@dimen/_16sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_nearest">
+
+                <include layout="@layout/items_product_placeholder" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:id="@+id/rv_popular_menus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="visible"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:orientation="horizontal"

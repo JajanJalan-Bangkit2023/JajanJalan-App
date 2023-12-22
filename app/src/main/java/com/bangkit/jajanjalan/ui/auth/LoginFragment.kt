@@ -11,12 +11,10 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bangkit.jajanjalan.data.Result
-import com.bangkit.jajanjalan.data.pref.UserModel
-import com.bangkit.jajanjalan.data.remote.response.User
 import com.bangkit.jajanjalan.databinding.FragmentLoginBinding
 import com.bangkit.jajanjalan.ui.MainActivity
 import com.bangkit.jajanjalan.ui.auth.viewmodel.LoginViewModel
-import com.bangkit.jajanjalan.util.TokenUtil
+import com.bangkit.jajanjalan.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,6 +22,7 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<LoginViewModel>()
+    private lateinit var password: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,6 +57,8 @@ class LoginFragment : Fragment() {
                 is Result.Error -> {
                     binding.progressIndicator.hide()
                     binding.btnLogin.isEnabled = true
+                    toast(it.error)
+                    Log.d("LoginFragment", it.error)
                 }
             }
         }
@@ -66,7 +67,7 @@ class LoginFragment : Fragment() {
     private fun validateLogin() {
         binding.btnLogin.setOnClickListener {
             val email = binding.edLoginEmail.text.toString()
-            val password = binding.edLoginPassword.text.toString()
+            password = binding.edLoginPassword.text.toString()
             if (email.isEmpty()) {
                 binding.edLoginEmail.error = "Email cannot be empty"
                 binding.edLoginEmail.requestFocus()
@@ -108,7 +109,7 @@ class LoginFragment : Fragment() {
                         user.email.toString(),
                         user.name.toString(),
                         user.image.toString(),
-                        user.password.toString(),
+                        password,
                         token
                     )
                 }

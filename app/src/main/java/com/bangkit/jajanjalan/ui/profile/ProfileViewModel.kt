@@ -8,6 +8,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,4 +32,18 @@ class ProfileViewModel @Inject constructor(private val repository: UserRepositor
             repository.clear()
         }
     }
+
+    fun saveUser(userId: String, email: String, name: String, image: String , password: String, token: String) {
+        viewModelScope.launch {
+            repository.saveUser(userId, email, name, image, password, token)
+        }
+    }
+
+    fun updateProfile(
+        token: String,
+        id: String,
+        name: RequestBody,
+        password: RequestBody,
+        image: MultipartBody.Part
+    ) = repository.updateProfile(token, id, name, password, image)
 }

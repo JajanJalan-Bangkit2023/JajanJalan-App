@@ -92,6 +92,7 @@
                     android:fontFamily="@font/poppins"
                     android:text="@string/edit_profile"
                     android:textColor="@color/grey"
+                    android:drawableEnd="@drawable/ic_edit"
                     android:textSize="17sp" />
 
             </RelativeLayout>

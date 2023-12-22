@@ -161,72 +161,14 @@
             app:layout_constraintTop_toBottomOf="@+id/tl_confirm_password" />
 
         <LinearLayout
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_8sdp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingHorizontal="24dp"
-            app:layout_constraintBottom_toTopOf="@id/btn_register_google"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                app:dividerColor="@color/grey" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight=".5"
-                android:fontFamily="@font/roboto"
-                android:text="@string/or"
-                android:textAlignment="center"
-                android:textColor="@color/black" />
-
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                app:dividerColor="@color/grey" />
-
-        </LinearLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_register_google"
-            style="@style/Widget.MaterialComponents.Button.Icon"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_44sdp"
-            android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_marginTop="48dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/roboto"
-            android:text="@string/register_with_google"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:icon="@drawable/ic_google"
-            app:iconGravity="textStart"
-            app:iconTintMode="multiply"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_register"
-            app:strokeColor="@color/blue"
-            app:strokeWidth="1dp" />
-
-        <LinearLayout
             android:id="@+id/linear_info_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/_16sdp"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/btn_register_google">
+            app:layout_constraintTop_toBottomOf="@+id/btn_register">
 
             <TextView
                 android:id="@+id/tv_info"

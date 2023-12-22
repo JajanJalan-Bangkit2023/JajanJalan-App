@@ -8,7 +8,10 @@ data class UserResponse(
 	val userDetail: User? = null,
 
 	@field:SerializedName("message")
-	val message: String? = null
+	val message: String? = null,
+
+	@field:SerializedName("error")
+	val error: String? = null
 )
 
 data class User(

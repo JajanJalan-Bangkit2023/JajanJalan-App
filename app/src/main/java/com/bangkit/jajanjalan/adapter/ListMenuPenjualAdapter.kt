@@ -1,5 +1,6 @@
 package com.bangkit.jajanjalan.adapter
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -28,31 +29,31 @@ class ListMenuPenjualAdapter: RecyclerView.Adapter<ListMenuPenjualAdapter.ListIt
     }
 
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ListItemMenuViewHolder, position: Int) {
         val listItemMenu = differ.currentList[position]
-        if (listItemMenu != null) {
+        if (listItemMenu.menu != null) {
+            val rating = String.format("%.1f", listItemMenu.menu.rating)
             Glide.with(holder.itemView)
-                .load(listItemMenu.image)
+                .load(listItemMenu.menu.image)
                 .into(holder.binding.ivMenu)
 
             holder.binding.apply {
-                tvNameProduct.text = listItemMenu.item
-                tvPrice.text = "Rp ${listItemMenu.price.toString()} "
-            }
-            holder.itemView.setOnClickListener {
-                onItemClick.invoke(listItemMenu)
+                tvRating.text = rating
+                tvNameProduct.text = listItemMenu.menu.item
+                tvPrice.text = "Rp${listItemMenu.menu.price.toString()} "
             }
         }
         Log.d("Adapter listItemMenu", listItemMenu.toString())
     }
 
-    private val diffUtil: DiffUtil.ItemCallback<MenuPenjual> =
-        object : DiffUtil.ItemCallback<MenuPenjual>() {
-            override fun areItemsTheSame(oldItem: MenuPenjual, newItem: MenuPenjual): Boolean {
+    private val diffUtil: DiffUtil.ItemCallback<DataMenuItem> =
+        object : DiffUtil.ItemCallback<DataMenuItem>() {
+            override fun areItemsTheSame(oldItem: DataMenuItem, newItem: DataMenuItem): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: MenuPenjual, newItem: MenuPenjual): Boolean {
+            override fun areContentsTheSame(oldItem: DataMenuItem, newItem: DataMenuItem): Boolean {
                 return oldItem == newItem
             }
         }

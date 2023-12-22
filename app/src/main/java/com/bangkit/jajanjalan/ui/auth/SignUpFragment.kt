@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bangkit.jajanjalan.R
 import com.bangkit.jajanjalan.data.Result
 import com.bangkit.jajanjalan.databinding.FragmentSignUpBinding
 import com.bangkit.jajanjalan.ui.auth.viewmodel.RegisterViewModel
+import com.bangkit.jajanjalan.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -67,8 +67,7 @@ class SignUpFragment : Fragment() {
                 }
                 is Result.Error -> {
                     binding.progressIndicator.hide()
-                    binding.btnRegister.isEnabled = true
-                    Toast.makeText(requireContext(), it.error, Toast.LENGTH_LONG).show()
+                    toast(it.error)
                     Log.d("Error Register", it.error)
                 }
             }
@@ -100,7 +99,6 @@ class SignUpFragment : Fragment() {
                     show()
                 }
             } else {
-                Toast.makeText(requireContext(), "$email, $name, $password !", Toast.LENGTH_LONG).show()
                 observeRegister(email, name, password, "user")
             }
         }

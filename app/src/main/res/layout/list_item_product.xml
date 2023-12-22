@@ -26,9 +26,9 @@
                 <ImageView
                     android:id="@+id/iv_product"
                     android:layout_width="match_parent"
-                    android:layout_height="146dp"
+                    android:layout_height="match_parent"
                     android:background="@color/grey"
-                    android:scaleType="fitCenter"/>
+                    android:scaleType="centerCrop"/>
 
             </androidx.cardview.widget.CardView>
 
@@ -55,6 +55,7 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_star_yellow" />
                     <TextView
+                        android:id="@+id/tv_rating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
@@ -108,14 +109,16 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_location_blue" />
+                    android:src="@drawable/ic_food_bank" />
                 <TextView
+                    android:id="@+id/seller_name"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:fontFamily="@font/poppins"
                     android:layout_marginStart="@dimen/_2sdp"
                     android:layout_gravity="center_vertical"
-                    android:text="Sudirman, Jakarta"
+                    android:text=""
+                    android:maxLines="1"
                     android:textColor="@color/blue"
                     android:textSize="@dimen/_10ssp" />
             </LinearLayout>

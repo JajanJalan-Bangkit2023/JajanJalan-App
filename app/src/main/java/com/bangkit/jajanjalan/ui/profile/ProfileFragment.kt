@@ -1,13 +1,16 @@
 package com.bangkit.jajanjalan.ui.profile
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.bangkit.jajanjalan.R
 import com.bangkit.jajanjalan.data.pref.UserModel
 import com.bangkit.jajanjalan.databinding.FragmentProfileBinding
@@ -27,7 +30,7 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         showBottomNavView()
         // Inflate the layout for this fragment
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
@@ -61,17 +64,43 @@ class ProfileFragment : Fragment() {
     private fun setupAction() {
         binding.apply {
             btnLogout.setOnClickListener {
-                viewModel.logout()
-                navigateToAuthActivity()
+                AlertDialog.Builder(requireContext()).apply {
+                    setTitle("Confirm Logout")
+                    setMessage(getString(R.string.confirm_logout))
+                    setPositiveButton(getString(R.string.yes)) { _, _ ->
+                        viewModel.logout()
+                        navigateToAuthActivity()
+                    }
+                    setNegativeButton(getString(R.string.no)) {dialog, which ->
+                        dialog.dismiss()
+                    }
+                    create()
+                    show()
+                }
             }
+            btnLanguage.setOnClickListener{
+                startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+            }
+            tvEditProfile.setOnClickListener {
+                val action = ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment()
+                findNavController().navigate(action)
+            }
+
         }
+
     }
 
     private fun navigateToAuthActivity() {
-        Intent(requireActivity(), AuthActivity::class.java).also { intent->
+        Intent(requireContext(), AuthActivity::class.java).also { intent->
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupView()
     }
 
 }

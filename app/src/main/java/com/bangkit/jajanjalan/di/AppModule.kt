@@ -1,8 +1,11 @@
 package com.bangkit.jajanjalan.di
 
+import android.app.Application
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.room.Room
+import com.bangkit.jajanjalan.data.local.room.FavDatabase
 import com.bangkit.jajanjalan.data.pref.DataStoreManager
 import com.bangkit.jajanjalan.data.remote.retrofit.ApiService
 import com.bangkit.jajanjalan.util.dataStore
@@ -40,4 +43,17 @@ object AppModule {
     fun provideDataStoreManager(dataStore: DataStore<Preferences>) : DataStoreManager {
         return DataStoreManager(dataStore)
     }
+
+    @Singleton
+    @Provides
+    fun provideFavDatabase(application: Application) : FavDatabase {
+        return Room.databaseBuilder(
+            application,
+            FavDatabase::class.java,
+            "FavDatabase.db"
+        ).build()
+    }
+
+    @Provides
+    fun provideFavDao(favDatabase: FavDatabase) = favDatabase.favDao()
 }
