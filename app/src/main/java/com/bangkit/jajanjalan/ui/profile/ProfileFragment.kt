@@ -1,5 +1,6 @@
 package com.bangkit.jajanjalan.ui.profile
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
@@ -29,7 +30,7 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         showBottomNavView()
         // Inflate the layout for this fragment
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
@@ -63,8 +64,19 @@ class ProfileFragment : Fragment() {
     private fun setupAction() {
         binding.apply {
             btnLogout.setOnClickListener {
-                viewModel.logout()
-                navigateToAuthActivity()
+                AlertDialog.Builder(requireContext()).apply {
+                    setTitle("Confirm Logout")
+                    setMessage(getString(R.string.confirm_logout))
+                    setPositiveButton(getString(R.string.yes)) { _, _ ->
+                        viewModel.logout()
+                        navigateToAuthActivity()
+                    }
+                    setNegativeButton(getString(R.string.no)) {dialog, which ->
+                        dialog.dismiss()
+                    }
+                    create()
+                    show()
+                }
             }
             btnLanguage.setOnClickListener{
                 startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
