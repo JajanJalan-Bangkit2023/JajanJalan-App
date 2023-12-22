@@ -90,21 +90,6 @@ class UserRepository @Inject constructor(
     }
 
     suspend fun getDetailUser(userId: String): LiveData<Result<UserResponse>> {
-//        apiService.getUserDetail(userId).enqueue(object : Callback<UserResponse> {
-//            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
-//                if (response.isSuccessful) {
-//                    val responseData = response.body()
-//                    _resultUser.value = Result.Success(responseData!!)
-//                } else {
-//                    _resultUser.value = Result.Error(response.message())
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-//                _resultUser.value = Result.Error(t.message.toString())
-//            }
-//        })
-//        return _resultUser
         val response = apiService.getUserDetail(userId)
         if (response.isSuccessful) {
             val responseData = response.body()

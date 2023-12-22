@@ -90,6 +90,7 @@ class EditProfileFragment : Fragment() {
     private fun showImage() {
         currentImageUri.let {
             binding.ivProfil.setImageURI(it)
+            binding.btnSave.isEnabled = true
         }
     }
 
